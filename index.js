@@ -2,12 +2,20 @@ const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
 const axios = require("axios");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
 app.use(formidable());
 app.use(cors());
 
+// Connexion du serveur et de la base de données (BDD)
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true, // unique : true du model User
+  //useFindAndModify: false,
+});
 // Importer les routes
 const userRoutes = require("./routes/user"); // fichier routes user.js
 app.use(userRoutes);
