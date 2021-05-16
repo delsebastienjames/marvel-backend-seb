@@ -8,6 +8,10 @@ const app = express();
 app.use(formidable());
 app.use(cors());
 
+// Importer les routes
+const userRoutes = require("./routes/user"); // fichier routes user.js
+app.use(userRoutes);
+
 app.get("/characters", async (req, res) => {
   try {
     const response = await axios.get(
