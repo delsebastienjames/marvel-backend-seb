@@ -1,5 +1,5 @@
-// Importer les models
-//const Offer = require("../models/Offer");
+// Importer le ou les models
+
 const User = require("../models/User");
 
 const isAuthenticated = async (req, res, next) => {
