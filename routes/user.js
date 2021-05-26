@@ -45,7 +45,7 @@ router.post("/user/signup", async (req, res) => {
           hash: hash,
         });
 
-        // Sauvegarder l'évènement' dans la BDD (===> requête entre le serveur et la BDD)
+        // Sauvegarder l'évènement dans la BDD (===> requête entre le serveur et la BDD)
         await newUser.save();
 
         // Répondre au client
