@@ -20,10 +20,24 @@ mongoose.connect(process.env.MONGODB_URI, {
 const userRoutes = require("./routes/user"); // fichier routes user.js
 app.use(userRoutes);
 
+// 1ère route
 app.get("/characters", async (req, res) => {
   try {
     const response = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}`
+    );
+    //console.log(response.data);
+    res.json(response.data);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// 2ème route
+app.get("/comics", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}`
     );
     //console.log(response.data);
     res.json(response.data);
