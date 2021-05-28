@@ -46,6 +46,19 @@ app.get("/comics", async (req, res) => {
   }
 });
 
+// 3ème route
+app.get("/id:characters", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/comics/id:?apiKey=${process.env.MARVEL_API_KEY}`
+    );
+    //console.log(response.data);
+    res.json(response.data);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(400).json({ message: "Page not found" });
 });
